@@ -1,11 +1,15 @@
 const gameSelections = ['rock', 'paper', 'scissors'];
 
+function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function getNumberOfRounds() {
     let numOfRounds; 
 
     while (true) {
         numOfRounds = +prompt('How many rounds would you like to play?');
-        if (!(isNaN(numOfRounds)))
+        if (numOfRounds !== 0 && !(isNaN(numOfRounds)))
             break;
         console.log('Please enter a number')
     }
@@ -15,7 +19,6 @@ function getNumberOfRounds() {
 
 function getComputerChoice() {  // randomly returns rock/paper/scissors
     let randomNumber = Math.floor(Math.random() * 3);
-    console.log(gameSelections[randomNumber]);
     return gameSelections[randomNumber];  
 }  
 
@@ -31,7 +34,6 @@ function getPlayerChoice() { // prompts player for selection, and only accepts i
             console.log('Please type selection again')
         }
     }
-    console.log(selection);
     return selection;
 }    
 
@@ -40,17 +42,17 @@ function playRound(computerSelection, playerSelection) { //determines the result
     
     switch(true) {
         case playerSelection === computerSelection:
-            console.log('You tie!')
+            console.log(`You tie! You both selected ${playerSelection}`)
             result = 'tie'
             break;
         case playerSelection == 'rock' && computerSelection == 'scissors':
         case playerSelection == 'scissors' && computerSelection == 'paper':
         case playerSelection == 'paper' && computerSelection == 'rock':           
-            console.log('Player wins');
+            console.log(`Player wins! ${capitaliseFirstLetter(playerSelection)} beats ${computerSelection}`);
             result = 'player'
             break;
         default:
-            console.log('Computer wins');
+            console.log(`Computer wins! ${capitaliseFirstLetter(computerSelection)} beats ${playerSelection}`);
             result = 'computer'
             break;
     }
@@ -68,6 +70,13 @@ function declareOverallResults (playerCount, computerCount) {
     } else {
         console.log('Computer wins the game!')
     }
+}
+
+function replayGame() {
+    let replayAnswer = prompt('Would you like to play again?').toLowerCase()
+    if (replayAnswer === 'yes') {
+        game();
+    } 
 }
 
 function game() { // increments score based on the winner of the round. If there is a tie, it reruns the round
@@ -93,6 +102,8 @@ function game() { // increments score based on the winner of the round. If there
         }
     }
     declareOverallResults(playerCount, computerCount)
+
+    replayGame()
 }
    
 
