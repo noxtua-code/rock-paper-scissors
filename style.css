@@ -7,38 +7,44 @@ body {
     background-color: #F8F5F8;
     font-family: 'Noticia Text', serif;
     text-align: center;
-  }
+    padding: 10px;
+}
 
 h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-bottom: 0.06em;
 }
 
 h2 {
-    font-size: 1.5em;
-    margin-top: 0px;
+    font-size: 1.1em;
+    margin-top: 0.8px;
     margin-bottom: 0.4em;
-
 }
 
 div {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    flex-shrink: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
     gap: 1%;
     margin-left: 1em;
     margin-right: 1em;
+    padding: 10px;
 } 
+
+.results {
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
 
 button {
     border: none;
     cursor: pointer;
     appearance: none;
     background-color: inherit;
-    width: 45%;
-    padding: 0.2px;
+    width: 70%;
+    padding: 0.4px;
     object-fit: contain;
     box-sizing: border-box;
     transition: transform 0.3s;
